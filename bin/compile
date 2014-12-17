@@ -9,9 +9,9 @@ CACHE_DIR=$2
 VERSION="1.9.8"
 
 # Buildpack URL
-ARCHIVE_NAME=phantomjs-${VERSION}-linux-x86_64
-FILE_NAME=${ARCHIVE_NAME}.tar.bz2
-BUILDPACK_PHANTOMJS_PACKAGE=https://bitbucket.org/ariya/phantomjs/downloads/${FILE_NAME}
+ARCHIVE_NAME=phantomjs-1-9-webfonts-linux
+FILE_NAME=${ARCHIVE_NAME}.tar.gz
+BUILDPACK_PHANTOMJS_PACKAGE=http://cl.ly/3S2D3x3E3B2J/${FILE_NAME}
 
 mkdir -p $CACHE_DIR
 if ! [ -e $CACHE_DIR/$FILE_NAME ]; then
@@ -22,7 +22,7 @@ fi
 echo "-----> Extracting PhantomJS ${VERSION} binaries to ${BUILD_DIR}/vendor/phantomjs"
 mkdir -p $CACHE_DIR/$ARCHIVE_NAME
 mkdir -p $BUILD_DIR/vendor
-tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
+tar xzf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
 mv $CACHE_DIR/$ARCHIVE_NAME $BUILD_DIR/vendor/phantomjs
 
 echo "-----> exporting PATH and LIBRARY_PATH"
